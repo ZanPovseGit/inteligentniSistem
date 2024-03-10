@@ -1,7 +1,7 @@
 import pytest
 import json
 import requests
-from "C:\Users\Uporabnik\Desktop\notebooks\inteligVaje\src\serve\service.py" import app
+from service import app
 
 @pytest.fixture
 def client():
