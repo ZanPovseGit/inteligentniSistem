@@ -31,7 +31,10 @@ def save_json_to_file_per_name(df, df2, folder_path):
         df_filtered = pd.concat([df_filtered, df2.reset_index(drop=True)], axis=1)        
         data_to_save = df_filtered.to_dict(orient='records')
         file_path = os.path.join(folder_path, f'{name}.json')
-        with open(file_path, 'a') as json_file:
+        with open(file_path, 'a+') as json_file:
+            json_file.seek(0, os.SEEK_END)
+            if json_file.tell() != 0:
+                json_file.write('\n')
             json.dump(data_to_save, json_file, indent=2)
         print(f"JSON file saved successfully for {name} at {file_path}")
 
