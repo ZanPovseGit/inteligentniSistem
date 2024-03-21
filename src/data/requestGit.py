@@ -39,7 +39,7 @@ def save_json_to_file_per_name(df, df2, folder_path):
 def main():
     api_url = 'https://api.jcdecaux.com/vls/v1/stations?contract=maribor&apiKey=5e150537116dbc1786ce5bec6975a8603286526b'
     api_url2 = 'https://api.open-meteo.com/v1/forecast?latitude=46.5547&longitude=15.6467&current=temperature_2m,rain,weather_code&timezone=Europe%2FBerlin&forecast_days=1'
-    folder_path = '/data/raw/'
+    folder_path = 'data/raw/'
     json_data = fetch_json_from_api(api_url)
     weather_data = fetch_json_from_api(api_url2)
 
