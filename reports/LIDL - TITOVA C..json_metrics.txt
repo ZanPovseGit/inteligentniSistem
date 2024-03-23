@@ -1,0 +1,4 @@
+Test Loss: 76.75408172607422
+Accuracy: 0.0
+Precision: 0.0
+Recall: 0.0

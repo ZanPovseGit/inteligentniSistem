@@ -1,0 +1,16 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+.bike-image {
+    width: 200px;
+    margin-bottom: 20px;
+}
+.data {
+    font-size: 18px;
+}
