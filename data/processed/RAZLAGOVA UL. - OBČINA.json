@@ -36,5 +36,43 @@
     "rain": 0.0,
     "weather_code": 0,
     "time": "2024-03-21T23:00"
+  },
+  {
+    "name": "RAZLAGOVA UL. - OB\u010cINA",
+    "address": "Razlagova ulica 1",
+    "position": {
+      "lat": 46.56196,
+      "lng": 15.650235
+    },
+    "banking": false,
+    "bonus": false,
+    "bike_stands": 20,
+    "available_bike_stands": 20,
+    "available_bikes": 0,
+    "status": "OPEN",
+    "last_update": 1711200409000,
+    "temperature_2m": 19.9,
+    "rain": 0.0,
+    "weather_code": 0,
+    "time": "2024-03-23T14:30"
+  },
+  {
+    "name": "RAZLAGOVA UL. - OB\u010cINA",
+    "address": "Razlagova ulica 1",
+    "position": {
+      "lat": 46.56196,
+      "lng": 15.650235
+    },
+    "banking": false,
+    "bonus": false,
+    "bike_stands": 20,
+    "available_bike_stands": 19,
+    "available_bikes": 1,
+    "status": "OPEN",
+    "last_update": 1711204645000,
+    "temperature_2m": 19.2,
+    "rain": 0.0,
+    "weather_code": 3,
+    "time": "2024-03-23T15:45"
   }
 ]

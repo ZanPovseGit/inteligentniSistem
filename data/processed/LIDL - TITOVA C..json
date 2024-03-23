@@ -36,5 +36,43 @@
     "rain": 0.0,
     "weather_code": 0,
     "time": "2024-03-21T23:00"
+  },
+  {
+    "name": "LIDL - TITOVA C.",
+    "address": "Titova cesta 15",
+    "position": {
+      "lat": 46.551963,
+      "lng": 15.651564
+    },
+    "banking": false,
+    "bonus": false,
+    "bike_stands": 20,
+    "available_bike_stands": 0,
+    "available_bikes": 20,
+    "status": "OPEN",
+    "last_update": 1711200988000,
+    "temperature_2m": 19.9,
+    "rain": 0.0,
+    "weather_code": 0,
+    "time": "2024-03-23T14:30"
+  },
+  {
+    "name": "LIDL - TITOVA C.",
+    "address": "Titova cesta 15",
+    "position": {
+      "lat": 46.551963,
+      "lng": 15.651564
+    },
+    "banking": false,
+    "bonus": false,
+    "bike_stands": 20,
+    "available_bike_stands": 1,
+    "available_bikes": 19,
+    "status": "OPEN",
+    "last_update": 1711204619000,
+    "temperature_2m": 19.2,
+    "rain": 0.0,
+    "weather_code": 3,
+    "time": "2024-03-23T15:45"
   }
 ]

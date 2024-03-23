@@ -36,5 +36,43 @@
     "rain": 0.0,
     "weather_code": 0,
     "time": "2024-03-21T23:00"
+  },
+  {
+    "name": "NA POLJANAH - HEROJA \u0160ERCERJA",
+    "address": "NA POLJANAH 53",
+    "position": {
+      "lat": 46.553109,
+      "lng": 15.624098
+    },
+    "banking": false,
+    "bonus": false,
+    "bike_stands": 20,
+    "available_bike_stands": 19,
+    "available_bikes": 1,
+    "status": "OPEN",
+    "last_update": 1711200397000,
+    "temperature_2m": 19.9,
+    "rain": 0.0,
+    "weather_code": 0,
+    "time": "2024-03-23T14:30"
+  },
+  {
+    "name": "NA POLJANAH - HEROJA \u0160ERCERJA",
+    "address": "NA POLJANAH 53",
+    "position": {
+      "lat": 46.553109,
+      "lng": 15.624098
+    },
+    "banking": false,
+    "bonus": false,
+    "bike_stands": 20,
+    "available_bike_stands": 17,
+    "available_bikes": 3,
+    "status": "OPEN",
+    "last_update": 1711204635000,
+    "temperature_2m": 19.2,
+    "rain": 0.0,
+    "weather_code": 3,
+    "time": "2024-03-23T15:45"
   }
 ]
