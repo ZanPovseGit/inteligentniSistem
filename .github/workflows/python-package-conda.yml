@@ -1,4 +1,4 @@
-name: Run Tests
+name: dataTrigger
 
 on:
   schedule:
@@ -24,11 +24,6 @@ jobs:
         
     - name: Run Python script
       run: python src/data/requestGit.py
-
-    - name: Run tests
-      run: |
-        python src/serve/testi.py  
-        pytest
 
     - name: Commit and push changes
       run: |
