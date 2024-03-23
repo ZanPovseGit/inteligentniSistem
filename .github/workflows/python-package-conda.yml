@@ -29,3 +29,11 @@ jobs:
       run: |
         python src/serve/testi.py  
         pytest
+
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "Update JSON files"
+        git push
