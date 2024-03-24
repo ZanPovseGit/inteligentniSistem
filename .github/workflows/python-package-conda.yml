@@ -34,4 +34,4 @@ jobs:
         git push
         git push https://github.com/${{ github.repository }}.git HEAD:${{ github.ref }} --force --quiet --follow-tags --set-upstream
       env:
-        GITHUB_TOKEN: ${{ secrets.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 }}
+        GITHUB_TOKEN: ${{ secrets.YOUR_PAT_SECRET }}
