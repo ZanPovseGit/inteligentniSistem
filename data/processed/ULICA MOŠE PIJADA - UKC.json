@@ -74,5 +74,24 @@
     "rain": 0.0,
     "weather_code": 3,
     "time": "2024-03-23T15:45"
+  },
+  {
+    "name": "ULICA MO\u0160E PIJADA - UKC",
+    "address": "Ulica Mo\u0161e Pijada 6",
+    "position": {
+      "lat": 46.552652,
+      "lng": 15.646023
+    },
+    "banking": false,
+    "bonus": false,
+    "bike_stands": 20,
+    "available_bike_stands": 14,
+    "available_bikes": 6,
+    "status": "OPEN",
+    "last_update": 1711540604000,
+    "temperature_2m": 17.4,
+    "rain": 0.0,
+    "weather_code": 3,
+    "time": "2024-03-27T12:45"
   }
 ]

@@ -9,8 +9,8 @@ import json
 app = Flask(__name__)
 
 
-lstm_model = load_model(r'C:\Users\Uporabnik\Desktop\notebooks\inteligVaje\src\models\model.h5')
-scaler = joblib.load(r'C:\Users\Uporabnik\Desktop\notebooks\inteligVaje\src\models\scaler.pkl')
+lstm_model = load_model('models/model.h5')
+scaler = joblib.load('models/scaler.pkl')
 
 lstm_features = ['day', 'month', 'year', 'hour', 'minute', 'relative_humidity', 'dew_point', 'apparent_temperature',
                  'precipitation_probability', 'rain', 'surface_pressure', 'bike_stands', 'temperature']

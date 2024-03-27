@@ -74,5 +74,24 @@
     "rain": 0.0,
     "weather_code": 3,
     "time": "2024-03-23T15:45"
+  },
+  {
+    "name": "VZAJEMNA, VARUH ZDRAVJA - BETNAVSKA C.",
+    "address": "Betnavska c. 83",
+    "position": {
+      "lat": 46.54199,
+      "lng": 15.63831
+    },
+    "banking": false,
+    "bonus": false,
+    "bike_stands": 20,
+    "available_bike_stands": 12,
+    "available_bikes": 8,
+    "status": "OPEN",
+    "last_update": 1711540301000,
+    "temperature_2m": 17.4,
+    "rain": 0.0,
+    "weather_code": 3,
+    "time": "2024-03-27T12:45"
   }
 ]

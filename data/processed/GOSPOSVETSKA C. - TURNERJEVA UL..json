@@ -74,5 +74,24 @@
     "rain": 0.0,
     "weather_code": 3,
     "time": "2024-03-23T15:45"
+  },
+  {
+    "name": "GOSPOSVETSKA C. - TURNERJEVA UL.",
+    "address": "Gosposvetska cesta 69",
+    "position": {
+      "lat": 46.562695,
+      "lng": 15.62935
+    },
+    "banking": false,
+    "bonus": false,
+    "bike_stands": 22,
+    "available_bike_stands": 17,
+    "available_bikes": 5,
+    "status": "OPEN",
+    "last_update": 1711540642000,
+    "temperature_2m": 17.4,
+    "rain": 0.0,
+    "weather_code": 3,
+    "time": "2024-03-27T12:45"
   }
 ]

@@ -28,7 +28,6 @@ def format_time(df):
         df['day'] = df['time'].dt.day
         df['month'] = df['time'].dt.month
         df['year'] = df['time'].dt.year
-        df['hour'] = df['time'].dt.hour
 
         df = df.drop('time', axis=1)
         return df
@@ -37,52 +36,51 @@ def format_time(df):
 model_dir = r'C:\Users\Uporabnik\Desktop\notebooks\InteligVaje\src\models'
 
 
-lstm_features = ['temperature_2m', 'rain','day','month','year','hour'] 
+lstm_features = ['temperature_2m', 'rain','day','month','year'] 
 
 @app.route('/predict', methods=['GET'])
 def predict():
     try:
-
-        api_url2 = 'https://api.open-meteo.com/v1/forecast?latitude=46.5547&longitude=15.6467&current=temperature_2m,rain,weather_code&timezone=Europe%2FBerlin&forecast_days=1'
+        api_url2 = 'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=weather_code,temperature_2m_max,rain_sum'
         weather_data = fetch_json_from_api(api_url2)
-        dataWetaher = request.get_json()
-        temperature_2m = dataWetaher['daily']['temperature_2m_max']
-        code = dataWetaher['daily']['weather_code']
-        time = dataWetaher['daily']['time']
-        rain = dataWetaher['daily']['rain']
+        
+        temperature_2m = weather_data['daily']['temperature_2m_max']
+        code = weather_data['daily']['weather_code']
+        time = weather_data['daily']['time']
+        rain = weather_data['daily']['rain_sum']
 
-        predictions_all_intervals = []
+        predictions_all_intervals = {}
 
         for filename in os.listdir(model_dir):
             if filename.endswith('.h5'):
                 base_name = os.path.splitext(filename)[0]
-                scaler = glob.glob(f"{model_dir}\\{base_name}.*")
+                scaler = glob.glob(f"{model_dir}\\{base_name}.pkl")
                 h5_model_path = os.path.join(model_dir, filename)
-                h5_model = load_model(h5_model_path)        
+                h5_model = load_model(h5_model_path)      
                 scaler_model_path = os.path.join(model_dir, filename)
-                scaler_model = joblib.load(scaler_model_path)
+                scaler_model = joblib.load(scaler[0])
 
                 predict = []
                 for i in range(len(time)):
                     # Create a dataset for each day
                     dataset = {
                         'time': time[i],
-                        'weather_code': code[i],
-                        'temperature_2m_max': temperature_2m[i],
+                        'temperature_2m': temperature_2m[i],
                         'rain': rain[i]
                     }
-                    df = pd.DataFrame(dataset)
+                    df = pd.DataFrame([dataset], index=[0])
                     df = format_time(df)
-                    input_data_scaled = scaler.transform(df[lstm_features])
+                    input_data_scaled = scaler_model.transform(df[lstm_features])
                     input_data_scaled = input_data_scaled.reshape((input_data_scaled.shape[0], input_data_scaled.shape[1], 1))
 
                     prediction = h5_model.predict(input_data_scaled)
-
                     predict.append(prediction.tolist())
 
-                predictions_all_intervals.append(predict)
+                predictions_all_intervals[filename] = predict
 
-        return predictions_all_intervals
+            json_predictions = json.dumps(predictions_all_intervals)
+
+        return json_predictions
 
 
 
@@ -94,7 +92,7 @@ def predict():
 
 
 def run_flask_app():
-    app.run(debug=False, port=6666)
+    app.run(debug=False, port=80)
 
 if __name__ == '__main__':
     run_flask_app()

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Stand Predictions</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bike Stand Predictions</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Bike Stand Name</th>
+                <th>Predictions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stand_name, predictions in data.items() %}
+            <tr>
+                <td>{{ stand_name }}</td>
+                <td>
+                    <ul>
+                        {% for prediction in predictions %}
+                            <li>{{ prediction[0][0] }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
