@@ -1,0 +1,28 @@
+[
+    {
+        "number": 12,
+        "contract_name": "maribor",
+        "name": "MLINSKA UL . - AVTOBUSNA POSTAJA",
+        "address": "Mlinska ulica 24",
+        "position": {
+            "lat": 46.558534,
+            "lng": 15.654739
+        },
+        "bike_stands": 20,
+        "available_bike_stands": 19,
+        "available_bikes": 1
+    },
+    {
+        "number": 12,
+        "contract_name": "maribor",
+        "name": "MLINSKA UL . - AVTOBUSNA POSTAJA",
+        "address": "Mlinska ulica 24",
+        "position": {
+            "lat": 46.558534,
+            "lng": 15.654739
+        },
+        "bike_stands": 20,
+        "available_bike_stands": 19,
+        "available_bikes": 1
+    }
+]

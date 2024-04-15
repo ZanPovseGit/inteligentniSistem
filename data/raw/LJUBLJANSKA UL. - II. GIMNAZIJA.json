@@ -1,0 +1,28 @@
+[
+    {
+        "number": 15,
+        "contract_name": "maribor",
+        "name": "LJUBLJANSKA UL. - II. GIMNAZIJA",
+        "address": "Ljubljanska ul. 30-25",
+        "position": {
+            "lat": 46.548853,
+            "lng": 15.645591
+        },
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 5
+    },
+    {
+        "number": 15,
+        "contract_name": "maribor",
+        "name": "LJUBLJANSKA UL. - II. GIMNAZIJA",
+        "address": "Ljubljanska ul. 30-25",
+        "position": {
+            "lat": 46.548853,
+            "lng": 15.645591
+        },
+        "bike_stands": 20,
+        "available_bike_stands": 17,
+        "available_bikes": 3
+    }
+]

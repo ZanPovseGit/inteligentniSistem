@@ -1,0 +1,28 @@
+[
+    {
+        "number": 26,
+        "contract_name": "maribor",
+        "name": "NICEHASH - C. PROLETARSKIH BRIGAD",
+        "address": "C. PROLETARSKIH BRIGAD 71",
+        "position": {
+            "lat": 46.543986,
+            "lng": 15.629317
+        },
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 5
+    },
+    {
+        "number": 26,
+        "contract_name": "maribor",
+        "name": "NICEHASH - C. PROLETARSKIH BRIGAD",
+        "address": "C. PROLETARSKIH BRIGAD 71",
+        "position": {
+            "lat": 46.543986,
+            "lng": 15.629317
+        },
+        "bike_stands": 20,
+        "available_bike_stands": 15,
+        "available_bikes": 5
+    }
+]

@@ -1,0 +1,28 @@
+[
+    {
+        "number": 7,
+        "contract_name": "maribor",
+        "name": "PARTIZANSKA C. - TIC",
+        "address": "Partizanska cesta 6a",
+        "position": {
+            "lat": 46.560227,
+            "lng": 15.650781
+        },
+        "bike_stands": 20,
+        "available_bike_stands": 4,
+        "available_bikes": 16
+    },
+    {
+        "number": 7,
+        "contract_name": "maribor",
+        "name": "PARTIZANSKA C. - TIC",
+        "address": "Partizanska cesta 6a",
+        "position": {
+            "lat": 46.560227,
+            "lng": 15.650781
+        },
+        "bike_stands": 20,
+        "available_bike_stands": 6,
+        "available_bikes": 14
+    }
+]

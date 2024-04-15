@@ -5,11 +5,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    # Make API request to fetch data
     api_url = "http://localhost:80/predict"
     response = requests.get(api_url)
     
-    # Check if request was successful
     if response.status_code == 200:
         data = response.json()
         return render_template('index.html', data=data)

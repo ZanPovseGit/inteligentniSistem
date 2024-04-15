@@ -1,21 +1,47 @@
 [
-  {
-    "name": "UM FGPA - LENT - SODNI STOLP",
-    "address": "Pristan 6",
-    "position": {
-      "lat": 46.556731,
-      "lng": 15.64212
+    {
+        "name": "UM FGPA - LENT - SODNI STOLP",
+        "address": "Pristan 6",
+        "position": {
+            "lat": 46.556731,
+            "lng": 15.64212
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 8,
+        "available_bikes": 12,
+        "status": "OPEN",
+        "last_update": 1711018649000,
+        "temperature_2m": 16.1,
+        "rain": 0.0,
+        "weather_code": 3,
+        "time": "2024-03-21T11:45"
     },
-    "banking": false,
-    "bonus": false,
-    "bike_stands": 20,
-    "available_bike_stands": 8,
-    "available_bikes": 12,
-    "status": "OPEN",
-    "last_update": 1711018649000,
-    "temperature_2m": 16.1,
-    "rain": 0.0,
-    "weather_code": 3,
-    "time": "2024-03-21T11:45"
-  }
+    {
+        "number": 28,
+        "contract_name": "maribor",
+        "name": "UM FGPA - LENT - SODNI STOLP",
+        "address": "Pristan 6",
+        "position": {
+            "lat": 46.556731,
+            "lng": 15.64212
+        },
+        "bike_stands": 20,
+        "available_bike_stands": 4,
+        "available_bikes": 16
+    },
+    {
+        "number": 28,
+        "contract_name": "maribor",
+        "name": "UM FGPA - LENT - SODNI STOLP",
+        "address": "Pristan 6",
+        "position": {
+            "lat": 46.556731,
+            "lng": 15.64212
+        },
+        "bike_stands": 20,
+        "available_bike_stands": 4,
+        "available_bikes": 16
+    }
 ]

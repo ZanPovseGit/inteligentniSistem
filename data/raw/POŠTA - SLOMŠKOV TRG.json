@@ -1,21 +1,47 @@
 [
-  {
-    "name": "PO\u0160TA - SLOM\u0160KOV TRG",
-    "address": "Slom\u0161kov trg 10",
-    "position": {
-      "lat": 46.558924,
-      "lng": 15.644443
+    {
+        "name": "PO\u0160TA - SLOM\u0160KOV TRG",
+        "address": "Slom\u0161kov trg 10",
+        "position": {
+            "lat": 46.558924,
+            "lng": 15.644443
+        },
+        "banking": false,
+        "bonus": false,
+        "bike_stands": 20,
+        "available_bike_stands": 10,
+        "available_bikes": 10,
+        "status": "OPEN",
+        "last_update": 1711018545000,
+        "temperature_2m": 16.1,
+        "rain": 0.0,
+        "weather_code": 3,
+        "time": "2024-03-21T11:45"
     },
-    "banking": false,
-    "bonus": false,
-    "bike_stands": 20,
-    "available_bike_stands": 10,
-    "available_bikes": 10,
-    "status": "OPEN",
-    "last_update": 1711018545000,
-    "temperature_2m": 16.1,
-    "rain": 0.0,
-    "weather_code": 3,
-    "time": "2024-03-21T11:45"
-  }
+    {
+        "number": 6,
+        "contract_name": "maribor",
+        "name": "PO\u0160TA - SLOM\u0160KOV TRG",
+        "address": "Slom\u0161kov trg 10",
+        "position": {
+            "lat": 46.558924,
+            "lng": 15.644443
+        },
+        "bike_stands": 20,
+        "available_bike_stands": 6,
+        "available_bikes": 14
+    },
+    {
+        "number": 6,
+        "contract_name": "maribor",
+        "name": "PO\u0160TA - SLOM\u0160KOV TRG",
+        "address": "Slom\u0161kov trg 10",
+        "position": {
+            "lat": 46.558924,
+            "lng": 15.644443
+        },
+        "bike_stands": 20,
+        "available_bike_stands": 6,
+        "available_bikes": 14
+    }
 ]

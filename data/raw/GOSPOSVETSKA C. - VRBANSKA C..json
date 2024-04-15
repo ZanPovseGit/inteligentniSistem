@@ -1,0 +1,28 @@
+[
+    {
+        "number": 2,
+        "contract_name": "maribor",
+        "name": "GOSPOSVETSKA C. - VRBANSKA C.",
+        "address": "Gosposvetska cesta 20",
+        "position": {
+            "lat": 46.561422,
+            "lng": 15.637118
+        },
+        "bike_stands": 22,
+        "available_bike_stands": 8,
+        "available_bikes": 14
+    },
+    {
+        "number": 2,
+        "contract_name": "maribor",
+        "name": "GOSPOSVETSKA C. - VRBANSKA C.",
+        "address": "Gosposvetska cesta 20",
+        "position": {
+            "lat": 46.561422,
+            "lng": 15.637118
+        },
+        "bike_stands": 22,
+        "available_bike_stands": 8,
+        "available_bikes": 14
+    }
+]
