@@ -27,6 +27,7 @@ jobs:
         curl -sSf https://api.jcdecaux.com/vls/v1/stations?contract=maribor&apiKey=5e150537116dbc1786ce5bec6975a8603286526b || exit 1
 
   download-data-script1:
+    needs: check-api1
     runs-on: ubuntu-latest
     
     steps:
@@ -47,6 +48,7 @@ jobs:
       run: python src/data/requestGit.py
 
   download-data-script2:
+    needs: check-api2
     runs-on: ubuntu-latest
     
     steps:
