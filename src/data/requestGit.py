@@ -36,9 +36,6 @@ def save_json_to_file_per_name(df, df2, folder_path):
 
         file_path = os.path.join(folder_path, f'{sanitized_name}.json')
 
-        with open(file_path, 'w') as json_file:
-            json.dump(data_to_save, json_file, indent=2)
-
         with dvc.repo.Repo('.') as repo:
             repo.add(file_path)
 
