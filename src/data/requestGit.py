@@ -66,7 +66,7 @@ def main():
         
     df2 = pd.DataFrame({
         'temperature_2m': [temperature_2m],
-'rain': [rain],
+        'rain': [rain],
         'weather_code': [weather_code],
         'time': [time]
     })
