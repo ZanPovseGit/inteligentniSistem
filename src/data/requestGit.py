@@ -71,9 +71,9 @@ def main():
         'time': [time]
     })
 
-    if json_data and not json_data.empty:
-        df = save_json_to_dataframe(json_data)
-        save_json_to_file_per_name(df,df2, folder_path)
+
+    df = save_json_to_dataframe(json_data)
+    save_json_to_file_per_name(df,df2, folder_path)
 
 if __name__ == "__main__":
     main()
