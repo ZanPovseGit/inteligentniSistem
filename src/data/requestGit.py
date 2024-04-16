@@ -1,6 +1,7 @@
 import os
 import requests
 import pandas as pd
+import dvc.api
 import json
 
 def fetch_json_from_api(api_url):
@@ -31,16 +32,19 @@ def save_json_to_file_per_name(df, df2, folder_path):
         df_filtered = pd.concat([df_filtered, df2.reset_index(drop=True)], axis=1)
         data_to_save = df_filtered.to_dict(orient='records')
         file_path = os.path.join(folder_path, f'{name}.json')
-        if os.path.exists(file_path):
-            with open(file_path, 'r') as json_file:
-                existing_data = json.load(json_file)
-        else:
-            existing_data = []
-        
-        existing_data.extend(data_to_save)
+        file_path_dvc = f"{file_path}.dvc"
         
         with open(file_path, 'w') as json_file:
-            json.dump(existing_data, json_file, indent=2)
+            json.dump(data_to_save, json_file, indent=2)
+        
+        with dvc.api.Repo('.') as repo:
+            repo.add(file_path)
+
+        with dvc.api.Repo('.') as repo:
+            repo.commit([file_path], message=f"Adding {name}.json")
+
+        with dvc.api.Repo('.') as repo:
+            repo.push()
         
         print(f"JSON file saved successfully for {name} at {file_path}")
 
