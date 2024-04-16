@@ -32,13 +32,18 @@ def save_json_to_file_per_name(df, df2, folder_path):
         df_filtered = pd.concat([df_filtered, df2.reset_index(drop=True)], axis=1)
         data_to_save = df_filtered.to_dict(orient='records')
 
-        file_path = os.path.join(folder_path, f'{name}.json')
+        sanitized_name = ''.join(c if c.isalnum() else '_' for c in name)
+
+        file_path = os.path.join(folder_path, f'{sanitized_name}.json')
+
+        with open(file_path, 'w') as json_file:
+            json.dump(data_to_save, json_file, indent=2)
 
         with dvc.repo.Repo('.') as repo:
             repo.add(file_path)
 
         with dvc.repo.Repo('.') as repo:
-            repo.commit([file_path], message=f"Adding {name}.json to DVC")
+            repo.commit([file_path], message=f"Adding {sanitized_name}.json to DVC")
 
         print(f"JSON data for {name} added to DVC")
 
