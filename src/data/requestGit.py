@@ -31,28 +31,29 @@ def save_json_to_file_per_name(df, df2, folder_path):
         df_filtered = pd.concat([df_filtered]*len(df2), ignore_index=True)
         df_filtered = pd.concat([df_filtered, df2.reset_index(drop=True)], axis=1)
         data_to_save = df_filtered.to_dict(orient='records')
-        file_path = os.path.join(folder_path, f'{name}.json')
-        file_path_dvc = f"{file_path}.dvc"
         
+        # Define the file path
+        file_path = os.path.join(folder_path, f'{name}.json')
+
+        # Add the file to DVC
         with open(file_path, 'w') as json_file:
             json.dump(data_to_save, json_file, indent=2)
-        
+
+        # Add the file to DVC
         with dvc.api.Repo('.') as repo:
             repo.add(file_path)
 
+        # Commit the changes to DVC
         with dvc.api.Repo('.') as repo:
             repo.commit([file_path], message=f"Adding {name}.json")
 
-        with dvc.api.Repo('.') as repo:
-            repo.push()
-        
-        print(f"JSON file saved successfully for {name} at {file_path}")
+        print(f"JSON data for {name} added to DVC")
 
 
 def main():
     api_url = 'https://api.jcdecaux.com/vls/v1/stations?contract=maribor&apiKey=5e150537116dbc1786ce5bec6975a8603286526b'
     api_url2 = 'https://api.open-meteo.com/v1/forecast?latitude=46.5547&longitude=15.6467&current=temperature_2m,rain,weather_code&timezone=Europe%2FBerlin&forecast_days=1'
-    folder_path = 'data/processed/'
+    folder_path = 'data/processed'
     json_data = fetch_json_from_api(api_url)
     weather_data = fetch_json_from_api(api_url2)
 
