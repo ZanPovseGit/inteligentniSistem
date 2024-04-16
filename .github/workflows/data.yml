@@ -1,0 +1,102 @@
+name: Data Download
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check-api1:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Check API 1
+      run: |
+        # Add commands to check if API 1 is running
+        # For example:
+        curl -sSf https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=weather_code,temperature_2m_max,rain_sum || exit 1
+
+  check-api2:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Check API 2
+      run: |
+        # Add commands to check if API 2 is running
+        # For example:
+        curl -sSf https://api.jcdecaux.com/vls/v1/stations?contract=maribor&apiKey=5e150537116dbc1786ce5bec6975a8603286526b || exit 1
+
+  download-data-script1:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+    
+    - name: Run data download script 1
+      run: python script1.py
+
+  download-data-script2:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+    
+    - name: Run data download script 2
+      run: python script2.py
+
+  download-data-script3:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+    
+    - name: Run data download script 3
+      run: python script3.py
+
+  dvc-push:
+    needs: [download-data-script1, download-data-script2, download-data-script3]
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    
+    - name: Install DVC and dvc-s3
+      run: |
+        pip install dvc[dvc-s3]
+        dvc pull  # Pull any changes from remote if necessary
+        dvc checkout  # Make sure all DVC-tracked files are available
+      
+    - name: Push data to DVC remote
+      run: dvc push
+
