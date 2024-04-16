@@ -1,7 +1,7 @@
 import os
 import requests
 import pandas as pd
-import dvc.repo
+import dvc.api
 import json
 
 def fetch_json_from_api(api_url):
@@ -23,9 +23,15 @@ def save_json_to_dataframe(json_data):
     else:
         return None
 
+def create_directory_if_not_exists(directory):
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+
 def save_json_to_file_per_name(df, df2, folder_path):
     df = df.drop(['number', 'contract_name'], axis=1)
     unique_names = df['name'].unique()
+    create_directory_if_not_exists(folder_path)
+
     for name in unique_names:
         df_filtered = df[df['name'] == name]
         df_filtered = pd.concat([df_filtered]*len(df2), ignore_index=True)
@@ -36,14 +42,15 @@ def save_json_to_file_per_name(df, df2, folder_path):
 
         file_path = os.path.join(folder_path, f'{sanitized_name}.json')
 
-        with dvc.repo.Repo('.') as repo:
-            repo.add(file_path)
+        with open(file_path, 'w') as f:
+            json.dump(data_to_save, f)
 
-        with dvc.repo.Repo('.') as repo:
-            repo.commit([file_path], message=f"Adding {sanitized_name}.json to DVC")
+        # Add the file to DVC
+        dvc_api = dvc.api.API('remote://dvc')
+        dvc_api.add(file_path)
+        dvc_api.commit(file_path, message=f"Adding {sanitized_name}.json to DVC")
 
         print(f"JSON data for {name} added to DVC")
-
 
 def main():
     api_url = 'https://api.jcdecaux.com/vls/v1/stations?contract=maribor&apiKey=5e150537116dbc1786ce5bec6975a8603286526b'
@@ -59,12 +66,12 @@ def main():
         
     df2 = pd.DataFrame({
         'temperature_2m': [temperature_2m],
-        'rain': [rain],
+'rain': [rain],
         'weather_code': [weather_code],
         'time': [time]
     })
 
-    if json_data:
+    if json_data and not json_data.empty:
         df = save_json_to_dataframe(json_data)
         save_json_to_file_per_name(df,df2, folder_path)
 
