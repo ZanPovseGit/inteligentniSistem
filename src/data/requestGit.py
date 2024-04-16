@@ -36,16 +36,12 @@ def save_json_to_file_per_name(df, df2, folder_path):
         file_path = os.path.join(folder_path, f'{name}.json')
 
         # Add the file to DVC
-        with open(file_path, 'w') as json_file:
-            json.dump(data_to_save, json_file, indent=2)
-
-        # Add the file to DVC
         with dvc.api.Repo('.') as repo:
             repo.add(file_path)
 
         # Commit the changes to DVC
         with dvc.api.Repo('.') as repo:
-            repo.commit([file_path], message=f"Adding {name}.json")
+            repo.commit([file_path], message=f"Adding {name}.json to DVC")
 
         print(f"JSON data for {name} added to DVC")
 
