@@ -22,20 +22,31 @@ def fetch_json_from_api(api_url):
         return None
     
 def format_time(df):
+    df['time'] = pd.to_datetime(df['time'])
+    df['day'] = df['time'].dt.day
+    df['month'] = df['time'].dt.month
+    df['year'] = df['time'].dt.year
+    df = df.drop('time', axis=1)
+    return df
 
-        df['time'] = pd.to_datetime(df['time'])
+def save_to_dvc(data, dvc_file_path):
+    try:
+        # Save the data to a CSV file
+        data.to_csv('data/processed.csv', index=False)
 
-        df['day'] = df['time'].dt.day
-        df['month'] = df['time'].dt.month
-        df['year'] = df['time'].dt.year
-
-        df = df.drop('time', axis=1)
-        return df
+        # Add the file to DVC
+        os.system(f'dvc add {dvc_file_path}')
+        
+        # Commit the changes
+        os.system('dvc commit -f')
+        
+        return True
+    except Exception as e:
+        print(f"Error saving data to DVC: {e}")
+        return False
 
 
 model_dir = r'C:\Users\Uporabnik\Desktop\notebooks\InteligVaje\src\models'
-
-
 lstm_features = ['temperature_2m', 'rain','day','month','year'] 
 
 @app.route('/predict', methods=['GET'])
@@ -80,16 +91,14 @@ def predict():
 
             json_predictions = json.dumps(predictions_all_intervals)
 
+        # DVC
+        processed_data_df = pd.DataFrame(json.loads(json_predictions))
+        save_to_dvc(processed_data_df, 'data/processed.dvc')
+
         return json_predictions
-
-
 
     except Exception as e:
         return jsonify({'error': str(e)})
-
-
-
-
 
 def run_flask_app():
     app.run(debug=False, port=80)
