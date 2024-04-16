@@ -1,7 +1,6 @@
 import os
 import requests
 import pandas as pd
-import dvc.api
 import json
 
 def fetch_json_from_api(api_url):
@@ -45,9 +44,7 @@ def save_json_to_file_per_name(df, df2, folder_path):
         with open(file_path, 'w') as f:
             json.dump(data_to_save, f)
 
-        dvc_api = dvc.api.ApiClient('remote://dvc')
-        dvc_api.add(file_path)
-        dvc_api.commit(file_path, message=f"Adding {sanitized_name}.json to DVC")
+
 
         print(f"JSON data for {name} added to DVC")
 
