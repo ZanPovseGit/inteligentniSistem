@@ -99,7 +99,6 @@ jobs:
     - name: Install DVC and dvc-s3
       run: |
         pip install dvc[dvc-s3]
-        dvc pull  # Pull any changes from remote if necessary
         dvc checkout  # Make sure all DVC-tracked files are available
       
     - name: Push data to DVC remote
