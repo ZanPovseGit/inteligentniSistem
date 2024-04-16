@@ -99,6 +99,10 @@ jobs:
     - name: Install DVC and dvc-s3
       run: |
         pip install dvc[dvc-s3]
+        dvc remote add origin s3://dvc
+        dvc remote modify origin endpointurl https://dagshub.com/ZanPovseGit/inteligentniSistem.s3
+        dvc remote modify origin --local access_key_id bdf091cc3f58df2c8346bb8ce616545e0e40b351
+        dvc remote modify origin --local secret_access_key bdf091cc3f58df2c8346bb8ce616545e0e40b351
         dvc pull  # Pull any changes from remote if necessary
         dvc checkout  # Make sure all DVC-tracked files are available
       
