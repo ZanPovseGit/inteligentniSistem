@@ -30,58 +30,61 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v2
-      
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.x'
-    
+        python-version: 3.8 
+
     - name: Install dependencies
       run: |
-        pip install -r requirements.txt
-    
-    - name: Run data download script 1
-      run: python script1.py
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt 
+        
+    - name: Run Python script
+      run: python src/data/requestGit.py
 
   download-data-script2:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v2
-      
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.x'
-    
+        python-version: 3.8 
+
     - name: Install dependencies
       run: |
-        pip install -r requirements.txt
-    
-    - name: Run data download script 2
-      run: python script2.py
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt 
+        
+    - name: Run Python script
+      run: python src/data/weather.py
 
   download-data-script3:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v2
-      
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.x'
-    
+        python-version: 3.8 
+
     - name: Install dependencies
       run: |
-        pip install -r requirements.txt
-    
-    - name: Run data download script 3
-      run: python script3.py
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt 
+        
+    - name: Run Python script
+      run: python src/data/bike.py
 
   dvc-push:
     needs: [download-data-script1, download-data-script2, download-data-script3]
