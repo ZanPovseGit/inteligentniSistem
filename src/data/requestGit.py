@@ -45,8 +45,7 @@ def save_json_to_file_per_name(df, df2, folder_path):
         with open(file_path, 'w') as f:
             json.dump(data_to_save, f)
 
-        # Add the file to DVC
-        dvc_api = dvc.api.API('remote://dvc')
+        dvc_api = dvc.api.DvcApi('remote://dvc')
         dvc_api.add(file_path)
         dvc_api.commit(file_path, message=f"Adding {sanitized_name}.json to DVC")
 
