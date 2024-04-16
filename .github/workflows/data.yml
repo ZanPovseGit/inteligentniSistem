@@ -99,7 +99,6 @@ jobs:
     - name: Install DVC and dvc-s3
       run: |
         pip install dvc[dvc-s3]
-        dvc pull
       
     - name: Push data to DVC remote
       run: dvc push -r origin
