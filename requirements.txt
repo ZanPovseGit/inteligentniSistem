@@ -47,11 +47,10 @@ tensorboard-plugin-wit==1.8.1
 tensorflow==2.7.0
 tensorflow-estimator==2.7.0
 urllib3<3.0.0
-requests
+requests==2.7.0
 websocket-client==0.58.0
 Werkzeug==2.3.8
 wheel==0.41.2
 dvc==3.33.0
 dvc-s3==3.0.0
 boto==2.45.00
-ssl

@@ -2,7 +2,7 @@ name: dataTrigger
 
 on:
   schedule:
-    - cron: '0 */2 * * *'
+    - cron: '0 */10 * * *'
 
 jobs:
   test:
@@ -27,11 +27,7 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add .
-        git commit -m "Update JSON files"
-        git push
-        git push https://github.com/${{ github.repository }}.git HEAD:${{ github.ref }} --force --quiet --follow-tags --set-upstream
-      env:
-        GITHUB_TOKEN: ${{ secrets.YOUR_PAT_SECRET }}
+          git config --global user.name 'ZanPovseGit'
+          git config --global user.email 'zan.povse11@gmail.com'
+          git commit -am "Automated save"
+          git push
