@@ -47,7 +47,7 @@ tensorboard-plugin-wit==1.8.1
 tensorflow==2.7.0
 tensorflow-estimator==2.7.0
 urllib3<3.0.0
-request
+requests
 websocket-client==0.58.0
 Werkzeug==2.3.8
 wheel==0.41.2
