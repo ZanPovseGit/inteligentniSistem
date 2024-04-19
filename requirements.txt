@@ -48,7 +48,7 @@ tensorflow-estimator==2.7.0
 urllib3<3.0.0
 requests
 websocket-client==0.58.0
-Werkzeug==2.3.8
+Werkzeug
 wheel==0.41.2
 dvc==3.33.0
 dvc-s3==3.0.0
