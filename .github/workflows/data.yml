@@ -103,7 +103,9 @@ jobs:
       
     - name: Push data to DVC remote
       run: |
-        dvc push -r origin
-        dvc remote modify origin --local access_key_id bdf091cc3f58df2c8346bb8ce616545e0e40b351
-        dvc remote modify origin --local secret_access_key bdf091cc3f58df2c8346bb8ce616545e0e40b351
+        dvc remote add ppu s3://dvc
+        dvc remote modify ppu endpointurl https://dagshub.com/ZanPovseGit/inteligentniSistem.s3
+        dvc remote modify ppu --local access_key_id bdf091cc3f58df2c8346bb8ce616545e0e40b351
+        dvc remote modify ppu --local secret_access_key bdf091cc3f58df2c8346bb8ce616545e0e40b351
+        dvc push -r ppu
 
