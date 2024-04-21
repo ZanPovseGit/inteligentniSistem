@@ -56,8 +56,8 @@ jobs:
 
     - name: Commit and Push to GitHub
       run: |
-        git config --local user.email 'zan.povse11@gmail.com'
-        git config --local user.name 'ZanPovseGit'
+        git config --global user.name 'ZanPovseGit'
+        git config --global user.email 'zan.povse11@gmail.com'        
         git add .
-        git commit -m "Update DVC data"
+        git commit -am "Update DVC data"
         git push
