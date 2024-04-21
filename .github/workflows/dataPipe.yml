@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  run_python_and_save_data:
+  dvc_save:
     runs-on: ubuntu-latest
 
     steps:
