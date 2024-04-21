@@ -45,9 +45,9 @@ jobs:
 
     - name: Configure DVC Remote
       run: |
-        dvc remote add origin https://dagshub.com/ZanPovseGit/inteligentniSistem.s3
-        dvc pull  
-        dvc push  
+        dvc remote add orr https://dagshub.com/ZanPovseGit/inteligentniSistem.s3
+        dvc pull -r orr 
+        dvc push -r orr
       env:
         DVC_REPOSITORY: ./  
 
