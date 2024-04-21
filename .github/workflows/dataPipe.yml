@@ -28,7 +28,7 @@ jobs:
        pip install dvc-s3
 
     - name: Run Python Script
-      run: python requestGit.py
+      run: python src/data/requestGit.py
 
     - name: Add Data to DVC
       run: | 
