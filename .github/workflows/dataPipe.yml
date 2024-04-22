@@ -32,15 +32,12 @@ jobs:
         git config --global user.email 'zan.povse11@gmail.com'
         git config --global user.name 'ZanPovseGit'
 
-
     - name: Run Python Script
       run: python src/data/requestGit.py
 
     - name: Add Data to DVC
       run: | 
         dvc add data/tempdata/processed/*.csv
-        git add data/tempdata/processed/*.dvc
-        git commit -m "Add generated data to DVC"
       working-directory: ${{ github.workspace }} 
 
     - name: Configure DVC Remote
