@@ -89,7 +89,7 @@ jobs:
       run: python src/data/bike.py
   
   pushNpull:
-    needs: download-data-script3
+    needs: download-data-script1
     runs-on: ubuntu-latest
 
     steps:
