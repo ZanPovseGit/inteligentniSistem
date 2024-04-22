@@ -89,7 +89,7 @@ jobs:
       run: python src/data/bike.py
 
   validate-data:
-    needs: dvc-pull
+    needs: download-data-script3
     runs-on: ubuntu-latest
     
     steps:
