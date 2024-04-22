@@ -37,7 +37,7 @@ jobs:
 
     - name: Add Data to DVC
       run: | 
-        dvc add data/tempdata/processed/*.csv
+        dvc add data/tempdata/processed/*.json
       working-directory: ${{ github.workspace }} 
 
     - name: Configure DVC Remote
