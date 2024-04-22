@@ -87,19 +87,49 @@ jobs:
         
     - name: Run Python script
       run: python src/data/bike.py
-
-  validate-data:
+  
+  pushNpull:
     needs: download-data-script3
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout repository
+    - name: Checkout Repository
       uses: actions/checkout@v2
 
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.8 
+        python-version: 3.8
+
+    - name: Install Dependencies
+      run: |
+       pip install -r requirements.txt
+       pip install dvc
+       pip install dvc-s3
+
+    - name: Set Git identity
+      run: |
+        git config --global user.email 'zan.povse11@gmail.com'
+        git config --global user.name 'ZanPovseGit'
+
+
+    - name: Run Python Script
+      run: python src/data/requestGit.py
+
+    - name: Add Data to DVC
+      run: | 
+        dvc add data/tempdata/processed/*.csv
+        git add data/tempdata/processed/*.dvc
+        git commit -m "Add generated data to DVC"
+      working-directory: ${{ github.workspace }} 
+
+    - name: Configure DVC Remote
+      run: |
+        dvc remote add ppu s3://dvc
+        dvc remote modify ppu endpointurl https://dagshub.com/ZanPovseGit/inteligentniSistem.s3
+        dvc remote modify ppu --local access_key_id bdf091cc3f58df2c8346bb8ce616545e0e40b351
+        dvc remote modify ppu --local secret_access_key bdf091cc3f58df2c8346bb8ce616545e0e40b351
+        dvc pull -r ppu
 
     - name: Install dependencies
       run: |
@@ -110,6 +140,7 @@ jobs:
     - name: Run Great Expectations validation
       run: |
         python src/data/expect.py 
+
 
   dvc-push:
     needs: [download-data-script1, download-data-script2, download-data-script3]

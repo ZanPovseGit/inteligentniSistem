@@ -38,7 +38,7 @@ jobs:
 
     - name: Add Data to DVC
       run: | 
-        dvc add data/tempdata/processed/*
+        dvc add data/tempdata/processed/*.csv
         git add data/tempdata/processed/*.dvc
         git commit -m "Add generated data to DVC"
       working-directory: ${{ github.workspace }} 
