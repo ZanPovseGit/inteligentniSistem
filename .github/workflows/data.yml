@@ -123,14 +123,6 @@ jobs:
         git commit -m "Add generated data to DVC"
       working-directory: ${{ github.workspace }} 
 
-    - name: Configure DVC Remote
-      run: |
-        dvc remote add ppu s3://dvc
-        dvc remote modify ppu endpointurl https://dagshub.com/ZanPovseGit/inteligentniSistem.s3
-        dvc remote modify ppu --local access_key_id bdf091cc3f58df2c8346bb8ce616545e0e40b351
-        dvc remote modify ppu --local secret_access_key bdf091cc3f58df2c8346bb8ce616545e0e40b351
-        dvc pull -r ppu
-
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -157,5 +149,10 @@ jobs:
       
     - name: Push data to DVC remote
       run: |
-        dvc push -r ppu
+        dvc remote add ppl s3://dvc
+        dvc remote modify ppl endpointurl https://dagshub.com/ZanPovseGit/inteligentniSistem.s3
+        dvc remote modify ppl --local access_key_id bdf091cc3f58df2c8346bb8ce616545e0e40b351
+        dvc remote modify ppl --local secret_access_key bdf091cc3f58df2c8346bb8ce616545e0e40b351
+        dvc pull -r ppl
+        dvc push -r ppl
 
