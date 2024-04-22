@@ -149,7 +149,7 @@ jobs:
       
     - name: Push data to DVC remote
       run: |
-        dvc remote add ppl s3://dvc
+        dvc remote add ppl s3://dvc -f
         dvc remote modify ppl endpointurl https://dagshub.com/ZanPovseGit/inteligentniSistem.s3
         dvc remote modify ppl --local access_key_id bdf091cc3f58df2c8346bb8ce616545e0e40b351
         dvc remote modify ppl --local secret_access_key bdf091cc3f58df2c8346bb8ce616545e0e40b351
