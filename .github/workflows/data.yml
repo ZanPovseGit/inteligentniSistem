@@ -88,6 +88,29 @@ jobs:
     - name: Run Python script
       run: python src/data/bike.py
 
+  validate-data:
+    needs: dvc-pull
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8 
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt 
+        pip install great_expectations
+
+    - name: Run Great Expectations validation
+      run: |
+        python src/data/expect.py 
+
   dvc-push:
     needs: [download-data-script1, download-data-script2, download-data-script3]
     runs-on: ubuntu-latest

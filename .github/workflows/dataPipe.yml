@@ -1,4 +1,4 @@
-name: Run Python Script and Save Data to DVC
+name: data DVC save
 
 on:
   push:
