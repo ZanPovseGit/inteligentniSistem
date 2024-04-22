@@ -5,7 +5,7 @@ import pandas as pd
 
 
 
-df = pd.read_csv("data/tempdata/DVORANA TABOR.csv")
+df = pd.read_csv("data/tempdata/DVORANA TABOR.json")
 
 expectation_suite = gx.expectations("NewSuite")
 validation_results = df.validate(expectation_suite)
