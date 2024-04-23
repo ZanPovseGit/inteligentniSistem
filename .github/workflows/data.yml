@@ -112,6 +112,10 @@ jobs:
     - name: Run Python Script
       run: python src/data/requestGit.py
 
+    - name: Run Great Expectations validation
+      run: |
+        python src/data/expect.py 
+
     - name: Add Data to DVC
       run: | 
         dvc add data/tempdata/processed/*.json
@@ -125,9 +129,6 @@ jobs:
         pip install -r requirements.txt 
         pip install great_expectations
 
-    - name: Run Great Expectations validation
-      run: |
-        python src/data/expect.py 
 
 
   dvc-push:
