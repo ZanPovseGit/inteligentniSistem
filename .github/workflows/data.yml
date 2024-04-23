@@ -112,6 +112,12 @@ jobs:
     - name: Run Python Script
       run: python src/data/requestGit.py
 
+    - name: Git add
+      run: |
+        git add .
+        git commit -m "Pre add"
+        git push
+
     - name: Run Great Expectations validation
       run: |
         python src/data/expect.py 
