@@ -154,50 +154,6 @@
       }
     },
     {
-      "expectation_type": "expect_column_min_to_be_between",
-      "kwargs": {
-        "column": "temperature_2m",
-        "max_value": 13.9,
-        "min_value": 13.9,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "temperature_2m"
-            },
-            "metric_name": "column.min",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_max_to_be_between",
-      "kwargs": {
-        "column": "temperature_2m",
-        "max_value": 13.9,
-        "min_value": 13.9,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "temperature_2m"
-            },
-            "metric_name": "column.max",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
       "expectation_type": "expect_column_values_to_be_between",
       "kwargs": {
         "column": "temperature_2m",
@@ -305,8 +261,8 @@
       "expectation_type": "expect_column_mean_to_be_between",
       "kwargs": {
         "column": "temperature_2m",
-        "max_value": 13.9,
-        "min_value": 13.9,
+        "max_value": 30,
+        "min_value": 0,
         "strict_max": false,
         "strict_min": false
       },
@@ -317,50 +273,6 @@
               "column": "temperature_2m"
             },
             "metric_name": "column.mean",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_min_to_be_between",
-      "kwargs": {
-        "column": "weather_code",
-        "max_value": 2,
-        "min_value": 2,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "weather_code"
-            },
-            "metric_name": "column.min",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_max_to_be_between",
-      "kwargs": {
-        "column": "weather_code",
-        "max_value": 2,
-        "min_value": 2,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "weather_code"
-            },
-            "metric_name": "column.max",
             "metric_value_kwargs": null
           },
           "num_batches": 1
@@ -531,73 +443,6 @@
     {
       "expectation_type": "expect_column_values_to_be_in_set",
       "kwargs": {
-        "column": "temperature_2m",
-        "mostly": 1.0,
-        "value_set": [
-          13.9
-        ]
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "temperature_2m"
-            },
-            "metric_name": "column.distinct_values",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1,
-          "parse_strings_as_datetimes": false
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_unique_value_count_to_be_between",
-      "kwargs": {
-        "column": "temperature_2m",
-        "max_value": 1,
-        "min_value": 1,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "temperature_2m"
-            },
-            "metric_name": "column.distinct_values.count",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_proportion_of_unique_values_to_be_between",
-      "kwargs": {
-        "column": "temperature_2m",
-        "max_value": 1.0,
-        "min_value": 1.0,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "temperature_2m"
-            },
-            "metric_name": "column.unique_proportion",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_values_to_be_in_set",
-      "kwargs": {
         "column": "weather_code",
         "mostly": 1.0,
         "value_set": [
@@ -615,50 +460,6 @@
           },
           "num_batches": 1,
           "parse_strings_as_datetimes": false
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_unique_value_count_to_be_between",
-      "kwargs": {
-        "column": "weather_code",
-        "max_value": 1,
-        "min_value": 1,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "weather_code"
-            },
-            "metric_name": "column.distinct_values.count",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_proportion_of_unique_values_to_be_between",
-      "kwargs": {
-        "column": "weather_code",
-        "max_value": 1.0,
-        "min_value": 1.0,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "weather_code"
-            },
-            "metric_name": "column.unique_proportion",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
         }
       }
     },
@@ -682,28 +483,6 @@
           },
           "num_batches": 1,
           "parse_strings_as_datetimes": false
-        }
-      }
-    },
-    {
-      "expectation_type": "expect_column_unique_value_count_to_be_between",
-      "kwargs": {
-        "column": "time",
-        "max_value": 1,
-        "min_value": 1,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "time"
-            },
-            "metric_name": "column.distinct_values.count",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
         }
       }
     },

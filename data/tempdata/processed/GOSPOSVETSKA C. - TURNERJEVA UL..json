@@ -1,0 +1,40 @@
+[
+  {
+    "name": "GOSPOSVETSKA C. - TURNERJEVA UL.",
+    "address": "Gosposvetska cesta 69",
+    "position": {
+      "lat": 46.562695,
+      "lng": 15.62935
+    },
+    "banking": false,
+    "bonus": false,
+    "bike_stands": 22,
+    "available_bike_stands": 8,
+    "available_bikes": 14,
+    "status": "OPEN",
+    "last_update": 1714156374000,
+    "temperature_2m": 11.3,
+    "rain": 0.0,
+    "weather_code": 2,
+    "time": "2024-04-26T20:30"
+  },
+  {
+    "name": "GOSPOSVETSKA C. - TURNERJEVA UL.",
+    "address": "Gosposvetska cesta 69",
+    "position": {
+      "lat": 46.562695,
+      "lng": 15.62935
+    },
+    "banking": false,
+    "bonus": false,
+    "bike_stands": 22,
+    "available_bike_stands": 8,
+    "available_bikes": 14,
+    "status": "OPEN",
+    "last_update": 1714156374000,
+    "temperature_2m": 11.3,
+    "rain": 0.0,
+    "weather_code": 2,
+    "time": "2024-04-26T20:30"
+  }
+]
