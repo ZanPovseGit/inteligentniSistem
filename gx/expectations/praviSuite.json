@@ -201,8 +201,8 @@
       "expectation_type": "expect_column_values_to_be_between",
       "kwargs": {
         "column": "temperature_2m",
-        "max_value": 13.9,
-        "min_value": 13.9,
+        "max_value": 40,
+        "min_value": 0,
         "mostly": 1.0,
         "strict_max": false,
         "strict_min": false
@@ -283,8 +283,8 @@
       "expectation_type": "expect_column_median_to_be_between",
       "kwargs": {
         "column": "temperature_2m",
-        "max_value": 13.9,
-        "min_value": 13.9,
+        "max_value": 30,
+        "min_value": 0,
         "strict_max": false,
         "strict_min": false
       },
@@ -393,8 +393,8 @@
       "expectation_type": "expect_column_values_to_be_between",
       "kwargs": {
         "column": "weather_code",
-        "max_value": 2,
-        "min_value": 2,
+        "max_value": 10,
+        "min_value": 0,
         "mostly": 1.0,
         "strict_max": false,
         "strict_min": false
