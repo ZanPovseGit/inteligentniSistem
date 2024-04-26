@@ -1,5 +1,5 @@
 import great_expectations as gx
-from great_expectations import DataContext
+from great_expectations import DataContext, DataAsset
 import pandas as pd
 import os
 import glob
@@ -13,13 +13,14 @@ expectation_suite = context.get_expectation_suite("NewSuite")
 file_list = glob.glob("data/tempdata/processed/*TABOR.json")
 if file_list:
     json_data = pd.read_json(file_list[0])
-    validation_results = context.run_validation_operator(
-    "action_list_operator",  # You might need to adjust this based on your setup
-    assets_to_validate=[json_data],  # Pass the JSON data to be validated
-    run_id="id1"  # Provide a unique run_id for tracking
-    )
+    data_asset = DataAsset(json_data)
 
-    # Check validation results
+    # Run validation
+    validation_results = context.run_validation_operator(
+        "default_validation_operator",  # Use appropriate validation operator
+        assets_to_validate=[data_asset],  # Pass the DataAsset to be validated
+        run_id="some_run_id"  # Provide a unique run_id for tracking
+    )
     if validation_results["success"]:
         print("Data meets expectation!")
     else:
