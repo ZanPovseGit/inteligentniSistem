@@ -46,7 +46,7 @@ def save_json_to_file_per_name(df, df2, folder_path):
 
 
 
-        print(f"JSON data for {name} added to DVC cc")
+        print(f"JSON data for {name} added to DVC")
 
 def main():
     api_url = 'https://api.jcdecaux.com/vls/v1/stations?contract=maribor&apiKey=5e150537116dbc1786ce5bec6975a8603286526b'

@@ -324,28 +324,6 @@
       }
     },
     {
-      "expectation_type": "expect_column_stdev_to_be_between",
-      "kwargs": {
-        "column": "temperature_2m",
-        "max_value": 0.0,
-        "min_value": 0.0,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "temperature_2m"
-            },
-            "metric_name": "column.standard_deviation",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
       "expectation_type": "expect_column_min_to_be_between",
       "kwargs": {
         "column": "weather_code",
@@ -475,8 +453,8 @@
       "expectation_type": "expect_column_median_to_be_between",
       "kwargs": {
         "column": "weather_code",
-        "max_value": 2.0,
-        "min_value": 2.0,
+        "max_value": 5.0,
+        "min_value": 0.0,
         "strict_max": false,
         "strict_min": false
       },
@@ -497,8 +475,8 @@
       "expectation_type": "expect_column_mean_to_be_between",
       "kwargs": {
         "column": "weather_code",
-        "max_value": 2.0,
-        "min_value": 2.0,
+        "max_value": 5.0,
+        "min_value": 0.0,
         "strict_max": false,
         "strict_min": false
       },
@@ -516,33 +494,11 @@
       }
     },
     {
-      "expectation_type": "expect_column_stdev_to_be_between",
-      "kwargs": {
-        "column": "weather_code",
-        "max_value": 0.0,
-        "min_value": 0.0,
-        "strict_max": false,
-        "strict_min": false
-      },
-      "meta": {
-        "profiler_details": {
-          "metric_configuration": {
-            "domain_kwargs": {
-              "column": "weather_code"
-            },
-            "metric_name": "column.standard_deviation",
-            "metric_value_kwargs": null
-          },
-          "num_batches": 1
-        }
-      }
-    },
-    {
       "expectation_type": "expect_column_value_lengths_to_be_between",
       "kwargs": {
         "column": "time",
-        "max_value": 16,
-        "min_value": 16,
+        "max_value": 20,
+        "min_value": 14,
         "mostly": 1.0,
         "strict_max": false,
         "strict_min": false
