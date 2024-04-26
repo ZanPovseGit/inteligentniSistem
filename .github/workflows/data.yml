@@ -97,12 +97,6 @@ jobs:
       with:
         python-version: 3.8
 
-    - name: Install Dependencies
-      run: |
-       pip install -r requirements.txt
-       pip install dvc
-       pip install dvc-s3
-
     - name: Set Git identity
       run: |
         git config --global user.email 'zan.povse11@gmail.com'
@@ -122,11 +116,6 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-    
-    - name: Install DVC and dvc-s3
-      run: |
-        pip install dvc-s3
-        pip install pyopenssl==24.0.0
       
     - name: Push data to DVC remote
       run: |

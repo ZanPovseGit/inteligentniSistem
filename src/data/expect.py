@@ -7,7 +7,7 @@ import glob
 
 
 file_list = glob.glob("data/tempdata/processed/*TABOR.json")
-os.listdir("data/tempdata/processed/")
+print(os.listdir("data/tempdata/processed/"))
 
 if file_list:
     df = pd.read_json(file_list[0])
