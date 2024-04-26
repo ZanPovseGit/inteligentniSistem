@@ -85,7 +85,7 @@ jobs:
       run: python src/data/bike.py
   
   pushNpull:
-    needs: download-data-script1
+    needs: [download-data-script1, download-data-script2, download-data-script3]
     runs-on: ubuntu-latest
 
     steps:
@@ -116,7 +116,7 @@ jobs:
 
 
   dvc-push:
-    needs: [download-data-script1, download-data-script2, download-data-script3]
+    needs: pushNpull
     runs-on: ubuntu-latest
     
     steps:
