@@ -54,6 +54,7 @@ def main():
     folder_path = 'data/tempdata/processed'
     json_data = fetch_json_from_api(api_url)
     weather_data = fetch_json_from_api(api_url2)
+    os.listdir("data/tempdata/processed/")
 
     temperature_2m = weather_data['current']['temperature_2m']
     rain = weather_data['current']['rain']
