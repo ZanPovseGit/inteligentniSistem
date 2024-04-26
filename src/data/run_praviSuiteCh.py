@@ -12,7 +12,7 @@ Checkpoints can be run directly without this script using the `great_expectation
 is provided for those who wish to run Checkpoints in python.
 
 Usage:
-- Run this file: `python great_expectations/uncommitted/run_Novo.py`.
+- Run this file: `python great_expectations/uncommitted/run_praviSuiteCh.py`.
 - This can be run manually or via a scheduler such, as cron.
 - If your pipeline runner supports python snippets, then you can paste this into your pipeline.
 """
@@ -29,7 +29,7 @@ data_context: FileDataContext = get_context(
 )
 
 result: CheckpointResult = data_context.run_checkpoint(
-    checkpoint_name="Novo",
+    checkpoint_name="praviSuiteCh",
     batch_request=None,
     run_name=None,
 )

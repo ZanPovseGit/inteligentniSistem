@@ -109,7 +109,7 @@ jobs:
     - name: Run Great Expectations validation
       run: |
         python src/data/requestGit.py
-        python src/data/run_Novo.py
+        python src/data/run_praviSuiteCh.py
 
 
 
