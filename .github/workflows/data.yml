@@ -118,12 +118,12 @@ jobs:
     steps:
     - name: Deploy DataDocs to Netlify
       uses: nwtgck/actions-netlify@v1.2
-    with:
-      publish-dir: "inteligsistemi/data_docs/local_site"
-      production-deploy: true
-    env:
-      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-      NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      with:
+        publish-dir: "sistemiintelig/uncommitted/data_docs/local_site"
+        production-deploy: true
+      env:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
   
 
