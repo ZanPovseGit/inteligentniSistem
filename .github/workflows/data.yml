@@ -110,7 +110,7 @@ jobs:
       run: |
         python src/data/requestGit.py
         python src/data/run_praviSuiteCh.py
-        
+
     - name: Deploy DataDocs to Netlify
       uses: nwtgck/actions-netlify@v1.2
       with:
@@ -123,7 +123,7 @@ jobs:
   
 
   dvc-push:
-    needs: pushNetlify
+    needs: pushNpull
     runs-on: ubuntu-latest
     
     steps:
