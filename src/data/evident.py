@@ -15,7 +15,7 @@ from evidently.tests.base_test import generate_column_tests
 from evidently.test_preset import DataStabilityTestPreset, NoTargetPerformanceTestPreset
 from evidently.tests import *
 
-df = pd.read_json('data/tempdata/processed/DVORANA_TABOR.json')
+df = pd.read_json('data/tempdata/processed/DVORANA TABOR.json')
 
 df.drop(columns=['position'], inplace=True)
 
