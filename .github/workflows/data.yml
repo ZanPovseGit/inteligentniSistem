@@ -117,7 +117,7 @@ jobs:
 
     steps:
     - name: Deploy DataDocs to Netlify
-    uses: nwtgck/actions-netlify@v1.2
+      uses: nwtgck/actions-netlify@v1.2
     with:
       publish-dir: "inteligsistemi/data_docs/local_site"
       production-deploy: true
