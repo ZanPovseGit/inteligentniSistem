@@ -37,8 +37,12 @@ def save_json_to_file_per_name(df, df2, folder_path):
         df_filtered = pd.concat([df_filtered, df2.reset_index(drop=True)], axis=1)
         data_to_append = df_filtered.to_dict(orient='records')
 
-        sanitized_name = ''.join(c if c.isalnum() else '_' if c not in ['š', 'č', 'ž'] else {'š': 's', 'č': 'c', 'ž': 'z'}[c] for c in name)
-
+        sanitized_name = ''.join(
+            c if c.isalnum() else            
+            '_' if c.lower() not in ['š', 'č', 'ž']  
+            else {'š': 's', 'č': 'c', 'ž': 'z', 'Š': 'S', 'Č': 'C', 'Ž': 'Z'}[c] 
+            for c in name
+)
         file_path = os.path.join(folder_path, f'{sanitized_name}.json')
 
         existing_data = []
