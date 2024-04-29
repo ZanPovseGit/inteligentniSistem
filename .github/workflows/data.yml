@@ -148,10 +148,48 @@ jobs:
     - name: Run tests
       run: src/data/evident.py
 
+  buildModels: 
+    needs: evident
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install Dependencies
+      run: |
+       pip install -r requirements.txt
+
+    - name: Get dvc files
+      run: |
+        dvc remote add ppl s3://dvc -f
+        dvc remote modify ppl endpointurl https://dagshub.com/ZanPovseGit/inteligentniSistem.s3
+        dvc remote modify ppl --local access_key_id bdf091cc3f58df2c8346bb8ce616545e0e40b351
+        dvc remote modify ppl --local secret_access_key bdf091cc3f58df2c8346bb8ce616545e0e40b351
+        dvc pull -r ppl
+    
+    - name: Run builder
+      run: |
+       src/data/evident.py
+       src/client/gradi.py
+
+    - name: Commit and Push to GitHub
+      run: |
+        git config --global user.name 'ZanPovseGit'
+        git config --global user.email 'zan.povse11@gmail.com'        
+        git add .
+        git commit -am "Model builder Action"
+        git push
+
   
 
   dvc-push:
-    needs: evident
+    needs: buildModels
     runs-on: ubuntu-latest
     
     steps:

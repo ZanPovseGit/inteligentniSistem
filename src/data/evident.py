@@ -1,7 +1,8 @@
 import pandas as pd
 import numpy as np
 
-from sklearn.datasets import fetch_california_housing
+from sklearn.model_selection import train_test_split
+import os
 
 from evidently import ColumnMapping
 
@@ -15,9 +16,11 @@ from evidently.tests.base_test import generate_column_tests
 from evidently.test_preset import DataStabilityTestPreset, NoTargetPerformanceTestPreset
 from evidently.tests import *
 
-df = pd.read_json('data/tempdata/processed/DVORANA TABOR.json')
+df = pd.read_json('data/tempdata/processed/DVORANA_TABOR.json')
 
 df.drop(columns=['position'], inplace=True)
+df.drop(columns=['banking'], inplace=True)
+df.drop(columns=['bonus'], inplace=True)
 
 df.rename(columns={'temperature_2m': 'target'}, inplace=True)
 df['prediction'] = df['target'].values + np.random.normal(0, 5, df.shape[0])
@@ -33,6 +36,9 @@ report = Report(metrics=[
 ])
 
 report.run(reference_data=reference, current_data=current)
-report
+print(report.as_dict())
 
-#nakje
+train_df, test_df = train_test_split(df, test_size=0.1, random_state=42)
+
+train_df.to_csv('data/tempdata/raw/learning_data.json', index=False)
+test_df.to_csv('data/tempdata/raw/evaluation_data.json', index=False)

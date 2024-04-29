@@ -35,19 +35,28 @@ def save_json_to_file_per_name(df, df2, folder_path):
         df_filtered = df[df['name'] == name]
         df_filtered = pd.concat([df_filtered]*len(df2), ignore_index=True)
         df_filtered = pd.concat([df_filtered, df2.reset_index(drop=True)], axis=1)
-        data_to_save = df_filtered.to_dict(orient='records')
+        data_to_append = df_filtered.to_dict(orient='records')
 
-        sanitized_name = ''.join(c if c.isalnum() else '_' for c in name)
+        sanitized_name = ''.join(c if c.isalnum() else '_' if c not in ['š', 'č', 'ž'] else {'š': 's', 'č': 'c', 'ž': 'z'}[c] for c in name)
 
         file_path = os.path.join(folder_path, f'{sanitized_name}.json')
 
+        existing_data = []
+        if os.path.exists(file_path):
+            with open(file_path, 'r') as f:
+                existing_data = json.load(f)
+
+        existing_data.extend(data_to_append)
+
         with open(file_path, 'w') as f:
-            json.dump(data_to_save, f)
+            json.dump(existing_data, f)
 
+        # Handling special characters for printing
+        print_name = sanitized_name.encode('ascii', 'ignore').decode('utf-8')
+        print_file_path = file_path.encode('ascii', 'ignore').decode('utf-8')
+        print(f"JSON data for {print_name} added to {print_file_path}")
 
-
-        print(f"JSON data for {name} added to DVC")
-
+        
 def main():
     api_url = 'https://api.jcdecaux.com/vls/v1/stations?contract=maribor&apiKey=5e150537116dbc1786ce5bec6975a8603286526b'
     api_url2 = 'https://api.open-meteo.com/v1/forecast?latitude=46.5547&longitude=15.6467&current=temperature_2m,rain,weather_code&timezone=Europe%2FBerlin&forecast_days=1'
