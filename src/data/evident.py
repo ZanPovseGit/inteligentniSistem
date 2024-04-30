@@ -16,22 +16,6 @@ from evidently.tests.base_test import generate_column_tests
 from evidently.test_preset import DataStabilityTestPreset, NoTargetPerformanceTestPreset
 from evidently.tests import *
 
-def list_files(directory):
-    # List all entries in the directory
-    entries = os.listdir(directory)
-    # Iterate over each entry
-    for entry in entries:
-        # Get the full path of the entry
-        full_path = os.path.join(directory, entry)
-        # Check if it's a file
-        if os.path.isfile(full_path):
-            # Print only the entry name (without full path)
-            print(entry.encode('utf-8').decode('utf-8', errors='ignore'))
-# Specify the directory you want to list
-directory_to_list = "data/tempdata/processed"
-
-# Call the function to list only the names of files in the specified directory
-list_files(directory_to_list)
 
 df = pd.read_json('data/tempdata/processed/DVORANA_TABOR.json')
 
