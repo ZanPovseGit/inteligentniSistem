@@ -10,7 +10,7 @@ from evidently.report import Report
 from evidently.metric_preset import DataDriftPreset
 from evidently.metrics import *
 
-df = pd.read_json('data/tempdata/processed/DVORANA_TABOR.json'):
+df = pd.read_json('data/tempdata/processed/DVORANA_TABOR.json')
 
 df.drop(columns=['position'], inplace=True)
 df.drop(columns=['banking'], inplace=True)
