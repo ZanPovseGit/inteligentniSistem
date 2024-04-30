@@ -56,4 +56,4 @@ dvc-s3==3.0.0
 boto==2.45.00
 pyopenssl==24.0.0
 great_expectations
-evidently
+

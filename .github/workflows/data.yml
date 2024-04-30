@@ -164,6 +164,7 @@ jobs:
     - name: Install Dependencies
       run: |
        pip install -r requirements.txt
+       pip install evidently
 
     - name: Get dvc files
       run: |
