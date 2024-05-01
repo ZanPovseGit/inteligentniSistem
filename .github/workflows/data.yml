@@ -146,7 +146,7 @@ jobs:
         dvc pull -r ppl
     
     - name: Run tests
-      run: src/data/evident.py
+      run: chmod +x src/data/evident.py
 
   buildModels: 
     needs: evident
