@@ -180,14 +180,6 @@ jobs:
        chmod +x src/data/evident.py
        chmod +x src/client/gradi.py
 
-    - name: Commit and Push to GitHub
-      run: |
-        git config --global user.name 'ZanPovseGit'
-        git config --global user.email 'zan.povse11@gmail.com'        
-        git add .
-        git commit -am "Model builder Action"
-        git push
-
   
 
   dvc-push:
