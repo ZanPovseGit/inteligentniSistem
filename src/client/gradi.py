@@ -8,6 +8,7 @@ from tensorflow.keras.layers import LSTM, Dense
 from sklearn.metrics import accuracy_score, precision_score, recall_score
 import joblib
 import json
+import mlflow 
 
 def create_lstm_model(input_shape):
     model = Sequential()
@@ -78,6 +79,12 @@ print(f"Recall: {recall}")
 
 model_filename = 'src/models/evaluation_model.h5'
 scaler_filename = 'src/models/evaluation_scaler.pkl'
+
+
+mlflow.tensorflow.autolog()
+mlflow.log_metric("accuracy", accuracy)
+mlflow.set_tracking_uri("https://dagshub.com/ZanPovseGit/inteligentniSistem.mlflow")
+
 
 lstm_model.save(model_filename)
 joblib.dump(scaler_lstm, scaler_filename)
