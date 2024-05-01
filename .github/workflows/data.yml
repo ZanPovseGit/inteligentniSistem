@@ -177,7 +177,7 @@ jobs:
     - name: Run builder
       run: |
        chmod +x src/data/evident.py
-       src/client/gradi.py
+       chmod +x src/client/gradi.py
 
     - name: Commit and Push to GitHub
       run: |
