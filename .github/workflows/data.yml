@@ -180,11 +180,6 @@ jobs:
        chmod +x src/data/evident.py
        chmod +x src/client/gradi.py
 
-    - name: Upload experiment
-      run: mlflow experiments upload --artifact-dir mlruns/idExperim --experiment-name someExperiment --backend dagshub --backend-uri https://dagshub.com/ZanPovseGit/inteligentniSistem.mlflow
-      env:
-        TRACKING_URI: ${{ secrets.DAGSHUB_TRACKING_URI }}
-
   
 
   dvc-push:
@@ -198,6 +193,7 @@ jobs:
     - name: Install DVC and dvc-s3
       run: |
         pip install dvc-s3
+        pip install pyopenssl
       
     - name: Push data to DVC remote
       run: |
