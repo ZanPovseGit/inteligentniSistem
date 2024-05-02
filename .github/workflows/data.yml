@@ -180,6 +180,11 @@ jobs:
        chmod +x src/data/evident.py
        chmod +x src/client/gradi.py
 
+    - name: Upload experiment
+      run: mlflow push --local-dir mlruns/idExperim $tracking_uri
+      env:
+        TRACKING_URI: ${{ secrets.DAGSHUB_TRACKING_URI }}
+
   
 
   dvc-push:
