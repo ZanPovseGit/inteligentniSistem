@@ -181,7 +181,7 @@ jobs:
        chmod +x src/client/gradi.py
 
     - name: Upload experiment
-      run: mlflow push --local-dir mlruns/idExperim $tracking_uri
+      run: mlflow experiments upload --artifact-dir mlruns/idExperim --experiment-name someExperiment --backend dagshub --backend-uri https://dagshub.com/ZanPovseGit/inteligentniSistem.mlflow
       env:
         TRACKING_URI: ${{ secrets.DAGSHUB_TRACKING_URI }}
 
