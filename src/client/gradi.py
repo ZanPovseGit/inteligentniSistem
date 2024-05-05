@@ -12,7 +12,10 @@ import mlflow
 
 mlflow.set_tracking_uri("https://dagshub.com/ZanPovseGit/inteligentniSistem.mlflow")
 
-with mlflow.start_run():
+os.environ["MLFLOW_TRACKING_USERNAME"] = "ZanPovseGit"
+os.environ["MLFLOW_TRACKING_PASSWORD"] = "bdf091cc3f58df2c8346bb8ce616545e0e40b351"
+
+with mlflow.start_run(run_name="Grajenje modela"):
 
     def create_lstm_model(input_shape):
         model = Sequential()
@@ -85,10 +88,10 @@ with mlflow.start_run():
     scaler_filename = 'src/models/evaluation_scaler.pkl'
 
 
-mlflow.tensorflow.autolog()
-mlflow.log_metric("accuracy", accuracy)
+    mlflow.tensorflow.autolog()
+    mlflow.log_metric("accuracy", accuracy)
 
 
 
-lstm_model.save(model_filename)
-joblib.dump(scaler_lstm, scaler_filename)
+    lstm_model.save(model_filename)
+    joblib.dump(scaler_lstm, scaler_filename)
