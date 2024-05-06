@@ -90,6 +90,7 @@ with mlflow.start_run(run_name="Grajenje modela"):
 
     mlflow.tensorflow.autolog()
     mlflow.log_metric("accuracy", accuracy)
+    mlflow.log_param("LSTM",100)
 
 
 

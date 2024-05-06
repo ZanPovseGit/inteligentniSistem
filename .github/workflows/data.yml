@@ -164,8 +164,7 @@ jobs:
     - name: Install Dependencies
       run: |
        pip install -r requirements.txt
-       pip install evidently
-       pip install mlflow
+       pip install evidently, mlflow
 
     - name: Get dvc files
       run: |
@@ -178,7 +177,7 @@ jobs:
     - name: Run builder
       run: |
        chmod +x src/data/evident.py
-       chmod +x src/client/gradi.py
+       python src/client/gradi.py
 
   
 
