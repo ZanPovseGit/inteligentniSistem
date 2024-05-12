@@ -18,16 +18,15 @@ from evidently.test_preset import DataStabilityTestPreset, NoTargetPerformanceTe
 from evidently.tests import *
 
 
-with open('data/tempdata/processed/DVORANA_TABOR.json') as f:
-    data = f.readlines()[1:] 
+df = pd.read_json('data/tempdata/processed/DVORANA_TABOR.json')
 
-data_dicts = [eval(line) for line in data]
-
-df = pd.DataFrame(data_dicts)
+df = df.iloc[1:]
 
 df.drop(columns=['position'], inplace=True)
 df.drop(columns=['banking'], inplace=True)
 df.drop(columns=['bonus'], inplace=True)
+
+print(df.head())
 
 df.rename(columns={'temperature_2m': 'target'}, inplace=True)
 df['prediction'] = df['target'].values + np.random.normal(0, 5, df.shape[0])
