@@ -40,3 +40,10 @@ jobs:
       run: |
        python src/data/evident.py
        python src/client/gradiZpipeline.py
+
+
+  dummyJob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dummy Step
+        run: echo "This is a dummy step"
