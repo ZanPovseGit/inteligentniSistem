@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Uporabnik/Desktop/notebooks/InteligVaje/mlruns/0/ab550cb4dde04694a145e26bba271087/artifacts
+end_time: 1715538424790
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ab550cb4dde04694a145e26bba271087
+run_name: Grajenje modela
+run_uuid: ab550cb4dde04694a145e26bba271087
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715538403552
+status: 4
+tags: []
+user_id: Uporabnik
