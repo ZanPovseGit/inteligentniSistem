@@ -27,6 +27,8 @@ df.drop(columns=['bonus'], inplace=True)
 df.rename(columns={'temperature_2m': 'target'}, inplace=True)
 df['prediction'] = df['target'].values + np.random.normal(0, 5, df.shape[0])
 
+print(df.head())
+
 midpoint = len(df) // 2
 
 reference = df.iloc[:midpoint]
