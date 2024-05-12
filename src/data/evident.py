@@ -37,7 +37,6 @@ report = Report(metrics=[
 ])
 
 report.run(reference_data=reference, current_data=current)
-print(report.as_dict())
 
 
 tests = TestSuite(tests=[
