@@ -206,8 +206,7 @@ jobs:
 
     - name: Install DVC and dvc-s3
       run: |
-        pip install dvc-s3
-        pip install pyopenssl
+        pip install -r requirements.txt
       
     - name: Push data to DVC remote
       run: |
