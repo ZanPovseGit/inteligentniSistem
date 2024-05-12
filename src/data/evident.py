@@ -18,7 +18,7 @@ from evidently.test_preset import DataStabilityTestPreset, NoTargetPerformanceTe
 from evidently.tests import *
 
 
-df = pd.read_json('data/tempdata/processed/DVORANA_TABOR.json')
+df = pd.read_json('data/tempdata/processed/DVORANA_TABOR.json',skiprows=1)
 
 df.drop(columns=['position'], inplace=True)
 df.drop(columns=['banking'], inplace=True)
