@@ -38,12 +38,12 @@ with mlflow.start_run(run_name="Grajenje modela"):
 
     def load_and_process_data(json_file):
         with open(json_file, 'r') as file:
-            data = json.load(file)
+            data = pd.read_csv(json_file)
 
         df = pd.DataFrame(data)
         df = preprocess_data(df)
 
-        lstm_features = ['temperature_2m', 'rain','day','month','year']
+        lstm_features = ['target', 'rain','day','month','year']
         lstm_target = 'available_bike_stands'
 
         df_lstm = df[lstm_features + [lstm_target]]
@@ -52,8 +52,8 @@ with mlflow.start_run(run_name="Grajenje modela"):
 
         return X_lstm, y_lstm
 
-    learning_json_file = 'data/tempdata/raw/learning_data.json'
-    evaluation_json_file = 'data/tempdata/raw/evaluation_data.json'
+    learning_json_file = 'data/tempdata/raw/learning_data.csv'
+    evaluation_json_file = 'data/tempdata/raw/evaluation_data.csv'
 
     X_train_lstm, y_train_lstm = load_and_process_data(learning_json_file)
 

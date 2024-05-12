@@ -146,7 +146,16 @@ jobs:
         dvc pull -r ppl
     
     - name: Run tests
-      run: chmod +x src/data/evident.py
+      run: python src/data/evident.py
+    
+    - name: Deploy DataDocs to Netlify
+      uses: nwtgck/actions-netlify@v1.2
+      with:
+        publish-dir: "reports/stability_test.html"
+        production-deploy: true
+      env:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
   buildModels: 
     needs: evident
@@ -176,7 +185,7 @@ jobs:
     
     - name: Run builder
       run: |
-       chmod +x src/data/evident.py
+       python src/data/evident.py
        python src/client/gradi.py
 
   
