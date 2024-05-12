@@ -136,6 +136,8 @@ jobs:
     - name: Install Dependencies
       run: |
        pip install -r requirements.txt
+       pip install evidently
+       pip install mlflow
 
     - name: Get dvc files
       run: |
