@@ -8,6 +8,7 @@ import os
 import urllib.request
 import shutil
 import onnx
+import onnxruntime as ort
 
 
 app = Flask(__name__)
@@ -41,6 +42,7 @@ try:
     previous_model_path = f"runs:/{previous_production_run_id}/onnx"
     model_url = mlflow.artifacts.download_artifacts(run_id=previous_production_run_id, artifact_path="onnx",dst_path="src/models/model.onnx")
     onnx_model = onnx.load("src/models/model.onnx/onnx/model.onnx")
+    onnx_session = ort.InferenceSession("src/models/model.onnx/onnx/model.onnx")
 except IndexError:
     print("No previous model found.")
 
@@ -52,7 +54,9 @@ def predict():
  
     processed_data = preprocess_request_data(request_data)
     
-    predictions = onnx_model.predict(processed_data)
+    input_name = onnx_session.get_inputs()[0].name  # Assuming single input
+    output_name = onnx_session.get_outputs()[0].name  # Assuming single output
+    predictions = onnx_session.run([output_name], {input_name: processed_data})[0]
 
     return jsonify({'predictions': predictions.tolist()})
 

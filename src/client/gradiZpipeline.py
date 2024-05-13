@@ -96,8 +96,8 @@ with mlflow.start_run(run_name="Grajenje modela2"):
     y_pred_binary = (y_pred > 0.5).astype(int)
 
     accuracy = accuracy_score(y_eval_lstm, y_pred_binary)
-    precision = precision_score(y_eval_lstm, y_pred_binary)
-    recall = recall_score(y_eval_lstm, y_pred_binary)
+    precision = precision_score(y_eval_lstm, y_pred_binary,pos_label=0)
+    recall = recall_score(y_eval_lstm, y_pred_binary,pos_label=0)
 
     print(f"Accuracy: {accuracy}")
     print(f"Precision: {precision}")
