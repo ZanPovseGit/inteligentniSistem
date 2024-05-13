@@ -118,6 +118,7 @@ with mlflow.start_run(run_name="Grajenje modela2"):
 
     try:
         previous_production_run = mlflow.search_runs(filter_string="tags.environment = 'production'",order_by=["start_time DESC"]).iloc[0]
+        print(previous_production_run.to_string())
         previous_production_run_id = previous_production_run["run_id"]
         previous_model_path = f"runs:/{previous_production_run_id}/lstm_model"
         previous_accuracy = previous_production_run["metrics.accuracy"]
@@ -125,14 +126,13 @@ with mlflow.start_run(run_name="Grajenje modela2"):
     except IndexError:
         print("No previous model found.")
 
-    new_accuracy = accuracy_score(y_eval_lstm, y_pred_binary)
-    print(f"New model accuracy: {new_accuracy}")
 
-    if new_accuracy >= previous_accuracy:
+
+    if accuracy >= previous_accuracy:
+        mlflow.log_param("environment", "production")
         onnx_model, _ = tf2onnx.convert.from_keras(lstm_model)
         mlflow.onnx.log_model(onnx_model,"onnx")
         mlflow.register_model("runs:/" + mlflow.active_run().info.run_id + "/lstm_model", "GradenjeModela2")
-        mlflow.log_param("environment", "production")
         print("New model saved.")
     else:
         print("New model is not better than the previous one. Keeping the old model.")

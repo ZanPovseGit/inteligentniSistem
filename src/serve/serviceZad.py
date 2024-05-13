@@ -4,8 +4,19 @@ import joblib
 import pandas as pd
 import numpy as np
 import mlflow
+import os
+import urllib.request
+import shutil
+import onnx
+
 
 app = Flask(__name__)
+
+
+mlflow.set_tracking_uri("https://dagshub.com/ZanPovseGit/inteligentniSistem.mlflow")
+
+os.environ["MLFLOW_TRACKING_USERNAME"] = "ZanPovseGit"
+os.environ["MLFLOW_TRACKING_PASSWORD"] = "bdf091cc3f58df2c8346bb8ce616545e0e40b351"
 
 class DateTimeTransformer:
         def fit(self, X, y=None):
@@ -23,24 +34,33 @@ class DateTimeTransformer:
 
 preprocessing_pipeline = joblib.load('src/models/evaluation_scaler.pkl')
 
+
+try:
+    previous_production_run = mlflow.search_runs(filter_string="tags.environment = 'production'", order_by=["start_time DESC"]).iloc[0]
+    previous_production_run_id = previous_production_run["run_id"]
+    previous_model_path = f"runs:/{previous_production_run_id}/onnx"
+    model_url = mlflow.artifacts.download_artifacts(run_id=previous_production_run_id, artifact_path="onnx",dst_path="src/models/model.onnx")
+    onnx_model = onnx.load("src/models/model.onnx/onnx/model.onnx")
+except IndexError:
+    print("No previous model found.")
+
+
 @app.route('/predict', methods=['POST'])
 def predict():
-
-    previous_production_run = mlflow.search_runs(filter_string="tags.environment = 'production'",order_by=["start_time DESC"]).iloc[0]
-    previous_production_run_id = previous_production_run["run_id"]
-    previous_model_path = f"runs:/{previous_production_run_id}/lstm_model"
-    lstm_model = load_model(previous_model_path)
     
     request_data = request.get_json()
  
     processed_data = preprocess_request_data(request_data)
     
-    predictions = lstm_model.predict(processed_data)
+    predictions = onnx_model.predict(processed_data)
 
     return jsonify({'predictions': predictions.tolist()})
 
 def preprocess_request_data(request_data):
-    data = pd.DataFrame(request_data)
+
+    data_list = [request_data]
+
+    data = pd.DataFrame(data_list)
     
     processed_data = preprocessing_pipeline.transform(data)
     
