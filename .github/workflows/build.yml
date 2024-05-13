@@ -7,7 +7,6 @@ on:
 jobs:
 
   buildModels: 
-    needs: evident
     runs-on: ubuntu-latest
 
     steps:
@@ -25,8 +24,8 @@ jobs:
 
     - name: Install evidently
       run: |
-       pip install evidently
-       pip install mlflow
+       pip install evidently onnx tf2onnx 
+       pip install mlflow onnxruntime
 
     - name: Get dvc files
       run: |
