@@ -19,8 +19,8 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
-          username: zanHub11
-          password: Hub123456
+          username: zanhub11
+          password: dckr_pat_0ZNXsQosD7ynj9PD_6M8krgWH80
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
