@@ -46,10 +46,10 @@ mlflow.set_tracking_uri("https://dagshub.com/ZanPovseGit/inteligentniSistem.mlfl
 os.environ["MLFLOW_TRACKING_USERNAME"] = "ZanPovseGit"
 os.environ["MLFLOW_TRACKING_PASSWORD"] = "bdf091cc3f58df2c8346bb8ce616545e0e40b351"
 
-mlflow.create_experiment("Daily check")
-mlflow.set_experiment("Daily check")
+mlflow.create_experiment("DailyCheck")
+mlflow.set_experiment("DailyCheck")
 
-with mlflow.start_run("Daily check"):
+with mlflow.start_run("DailyCheck"):
 
     try:
         previous_production_run = mlflow.search_runs(filter_string="tags.environment = 'production'", order_by=["start_time DESC"]).iloc[0]
