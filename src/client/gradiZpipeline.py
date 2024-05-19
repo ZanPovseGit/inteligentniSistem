@@ -33,14 +33,15 @@ with mlflow.start_run(run_name="Grajenje modela2"):
             return self
         
         def transform(self, X, y=None):
-            X['time'] = pd.to_datetime(X['time'])
-            X['day'] = X['time'].dt.day
-            X['month'] = X['time'].dt.month
-            X['year'] = X['time'].dt.year
-            X['hour'] = X['time'].dt.hour
-            X['minute'] = X['time'].dt.minute
-            X = X.drop('time', axis=1)
-            return X
+            X_copy = X.copy() 
+            X_copy['time'] = pd.to_datetime(X_copy['time'])
+            X_copy['day'] = X_copy['time'].dt.day
+            X_copy['month'] = X_copy['time'].dt.month
+            X_copy['year'] = X_copy['time'].dt.year
+            X_copy['hour'] = X_copy['time'].dt.hour
+            X_copy['minute'] = X_copy['time'].dt.minute
+            X_copy = X_copy.drop('time', axis=1)
+            return X_copy
         
     def load_and_process_data(json_file, selected_columns):
         data = pd.read_csv(json_file)
