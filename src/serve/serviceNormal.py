@@ -49,7 +49,7 @@ except IndexError:
 
 
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predictLas', methods=['POST'])
 def predict():
     data = request.get_json()
 
@@ -76,6 +76,8 @@ def predict():
 
     return jsonify({'prediction': prediction.tolist()})
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+def run_flask_app():
+    app.run(debug=False, port=5000)
 
+if __name__ == '__main__':
+    run_flask_app()

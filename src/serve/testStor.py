@@ -10,14 +10,14 @@ def client():
         yield client
 
 def test_predict_endpoint(client):
-
+    url = 'http://127.0.0.1:5000/predictLas'
     test_data = {
     "target": 1.0,
     "rain": 0.2,
     "time": "2024-05-15T14:30:00"
     }
 
-    response = client.post('/predict', json=test_data)
+    response = client.post(url, json=test_data)
 
     assert response.status_code == 200
 

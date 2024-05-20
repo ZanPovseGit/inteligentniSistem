@@ -6,40 +6,6 @@ import mlflow
 import os
 import joblib
 
-class DateTimeTransformer:
-    def fit(self, X, y=None):
-        return self
-        
-    def transform(self, X, y=None):
-        X_copy = X.copy() 
-        X_copy['time'] = pd.to_datetime(X_copy['time'])
-        X_copy['day'] = X_copy['time'].dt.day
-        X_copy['month'] = X_copy['time'].dt.month
-        X_copy['year'] = X_copy['time'].dt.year
-        X_copy['hour'] = X_copy['time'].dt.hour
-        X_copy['minute'] = X_copy['time'].dt.minute
-        X_copy = X_copy.drop('time', axis=1)
-        return X_copy
-    
-def load_and_process_data(json_file, selected_columns):
-    data = pd.read_csv(json_file)
-
-    data_selected = data[selected_columns]
-    
-    pipeline = joblib.load('src/models/evaluation_scaler.pkl')
-
-    X_scaled = pipeline.fit_transform(data_selected)
-        
-    all_columns  = ['target', 'rain','day', 'month', 'year', 'hour', 'minute']
-
-    df_lstm = pd.DataFrame(X_scaled, columns=all_columns)
-
-    lstm_target = 'available_bike_stands'
-    df_lstm[lstm_target] = data[lstm_target]
-
-    y_lstm = data[lstm_target]  
-
-    return df_lstm, y_lstm
 
 mlflow.set_tracking_uri("https://dagshub.com/ZanPovseGit/inteligentniSistem.mlflow")
 
@@ -50,6 +16,42 @@ mlflow.create_experiment("DailyCheck")
 mlflow.set_experiment("DailyCheck")
 
 with mlflow.start_run("DailyCheck"):
+
+    class DateTimeTransformer:
+        def fit(self, X, y=None):
+            return self
+            
+        def transform(self, X, y=None):
+            X_copy = X.copy() 
+            X_copy['time'] = pd.to_datetime(X_copy['time'])
+            X_copy['day'] = X_copy['time'].dt.day
+            X_copy['month'] = X_copy['time'].dt.month
+            X_copy['year'] = X_copy['time'].dt.year
+            X_copy['hour'] = X_copy['time'].dt.hour
+            X_copy['minute'] = X_copy['time'].dt.minute
+            X_copy = X_copy.drop('time', axis=1)
+            return X_copy
+        
+    def load_and_process_data(json_file, selected_columns):
+        data = pd.read_csv(json_file)
+
+        data_selected = data[selected_columns]
+        
+        pipeline = joblib.load('src/models/evaluation_scaler.pkl')
+
+        X_scaled = pipeline.fit_transform(data_selected)
+            
+        all_columns  = ['target', 'rain','day', 'month', 'year', 'hour', 'minute']
+
+        df_lstm = pd.DataFrame(X_scaled, columns=all_columns)
+
+        lstm_target = 'available_bike_stands'
+        df_lstm[lstm_target] = data[lstm_target]
+
+        y_lstm = data[lstm_target]  
+
+        return df_lstm, y_lstm
+
 
     try:
         previous_production_run = mlflow.search_runs(filter_string="tags.environment = 'production'", order_by=["start_time DESC"]).iloc[0]
