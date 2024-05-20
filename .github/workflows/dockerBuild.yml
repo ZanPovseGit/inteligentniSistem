@@ -28,4 +28,4 @@ jobs:
           context: .
           file: src/serve/docker/Dockerfile 
           push: true
-          tags: ${{ secrets.DOCKER_PASSWORD }}/your-flask-app:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/your-flask-app:latest
