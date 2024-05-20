@@ -3,6 +3,23 @@ import json
 import requests
 from serviceNormal import appImp
 
+
+class DateTimeTransformer:
+    def fit(self, X, y=None):
+        return self
+
+    def transform(self, X, y=None):
+        X['time'] = pd.to_datetime(X['time'])
+        X['day'] = X['time'].dt.day
+        X['month'] = X['time'].dt.month
+        X['year'] = X['time'].dt.year
+        X['hour'] = X['time'].dt.hour
+        X['minute'] = X['time'].dt.minute
+        X = X.drop('time', axis=1)
+        return X
+    
+
+
 @pytest.fixture
 def client():
     appImp.config['TESTING'] = True
