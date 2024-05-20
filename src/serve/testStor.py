@@ -1,7 +1,7 @@
 import pytest
 import json
 import requests
-from src.serve.service import appImp
+from service import appImp
 
 @pytest.fixture
 def client():
