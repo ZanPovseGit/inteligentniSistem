@@ -26,5 +26,6 @@ jobs:
     - name: Run tests with pytest
       run: |
         pytest src/serve/testi.py
-        pytest src/serve/testStor.py
         python src/serve/modelTest.py
+        pytest src/serve/testStor.py
+        
