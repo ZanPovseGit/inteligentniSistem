@@ -1,7 +1,8 @@
 import pytest
 import json
 import requests
-from serviceNormal import appImp
+from serviceNormal import appImp, DateTimeTransformer
+import pandas as pd
 
 class DateTimeTransformer:
     def fit(self, X, y=None):
