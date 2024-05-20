@@ -1,12 +1,12 @@
 import pytest
 import json
 import requests
-from service import app
+from src.serve.service import appImp
 
 @pytest.fixture
 def client():
-    app.config['TESTING'] = True
-    with app.test_client() as client:
+    appImp.config['TESTING'] = True
+    with appImp.test_client() as client:
         yield client
 
 def test_predict_endpoint(client):

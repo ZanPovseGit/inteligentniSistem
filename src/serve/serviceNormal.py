@@ -7,7 +7,7 @@ import mlflow
 import os
 
 
-app = Flask(__name__)
+appImp = Flask(__name__)
 
 mlflow.set_tracking_uri("https://dagshub.com/ZanPovseGit/inteligentniSistem.mlflow")
 
@@ -49,7 +49,7 @@ except IndexError:
 
 
 
-@app.route('/predictLas', methods=['POST'])
+@appImp.route('/predictLas', methods=['POST'])
 def predict():
     data = request.get_json()
 
@@ -77,7 +77,7 @@ def predict():
     return jsonify({'prediction': prediction.tolist()})
 
 def run_flask_app():
-    app.run(debug=False, port=5000)
+    appImp.run(debug=False, port=5000)
 
 if __name__ == '__main__':
     run_flask_app()
