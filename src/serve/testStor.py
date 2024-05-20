@@ -10,7 +10,7 @@ def client():
         yield client
 
 def test_predict_endpoint(client):
-    url = 'http://127.0.0.1:5000/predictLas'
+    url = '/predictLas'
     test_data = {
     "target": 1.0,
     "rain": 0.2,
