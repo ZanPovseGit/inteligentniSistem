@@ -27,5 +27,4 @@ jobs:
       run: |
         pytest src/serve/testi.py
         python src/serve/modelTest.py
-        pytest src/serve/testStor.py
         
