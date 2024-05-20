@@ -2,11 +2,11 @@ import pytest
 import json
 import requests
 from serviceNormal import appImp
+from serviceNormal import DateTimeTransformer
 import pandas as pd
 
 @pytest.fixture
 def client():
-    appImp.config['TESTING'] = True
     with appImp.test_client() as client:
         yield client
 
