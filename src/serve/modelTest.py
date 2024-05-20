@@ -12,10 +12,9 @@ mlflow.set_tracking_uri("https://dagshub.com/ZanPovseGit/inteligentniSistem.mlfl
 os.environ["MLFLOW_TRACKING_USERNAME"] = "ZanPovseGit"
 os.environ["MLFLOW_TRACKING_PASSWORD"] = "bdf091cc3f58df2c8346bb8ce616545e0e40b351"
 
-mlflow.create_experiment("DailyCheck")
-mlflow.set_experiment("DailyCheck")
 
-with mlflow.start_run("DailyCheck"):
+
+with mlflow.start_run(run_name="DailyCheck"):
 
     class DateTimeTransformer:
         def fit(self, X, y=None):
